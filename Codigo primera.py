@@ -74,5 +74,11 @@ while continuar and f>0:
             elif soma==v4:
                 f=f+valorT*4
                 print("Você ganhou")
-
-        
+    
+    
+    
+    
+    
+    
+    
+    
