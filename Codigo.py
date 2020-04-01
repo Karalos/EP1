@@ -54,7 +54,7 @@ while continuar and f>0:
                 print("Você ganhou")
             else:
                 print("Você perdeu")
-        elif tipoF=="s"
+        elif tipoF=="s":
             print("Você tem:{0} fichas".format(f))
             valorF=int(input("Quanto você quer apostar?")) 
             f=f-valorT
