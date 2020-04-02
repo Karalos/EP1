@@ -26,7 +26,7 @@ while continuar and f>0:
     #Dados
     numero1=random.randint(1,6)
     numero2=random.randint(1,6)
-    soma=soma=numero1+numero2
+    soma=5 #teste
     #Fase e Fichas
     print("Você está na fase:come out")
     print("Você tem:{0} fichas".format(f))
@@ -92,7 +92,7 @@ while continuar and f>0:
             print(Style.RESET_ALL)
             f=f-valorF
             if soma==5 or soma==6 or soma==7 or soma==8:
-                f=0
+               #f foi mantido ja que nao ha alteracoes
                 print(Fore.YELLOW+ "Você perdeu" )
                 print(Style.RESET_ALL)
             elif soma==3 or soma==4 or soma==9 or soma==10 or soma==11:
@@ -129,19 +129,42 @@ while continuar and f>0:
                     if SOMA==VitoriaPoint:
                         f=f+valorP
                         POINT=False
-                        input("Você ganhou, saindo da fase:point")
+                        print("Você ganhou, saindo da fase:point")
                     elif SOMA==7:
-                        f=0
-                        input("Você perdeu, saindo da fase:point")
+                        #f foi mantido ja que nao ha alteracoes
+                        print("Você perdeu, saindo da fase:point")
                         Point=False
                     else:
                         SOMA=True
-                        input("Você ainda está na fase:point")
-            elif soma==2 or soma==3 or soma==12:
-                print("Você perdeu")
-                print(Style.RESET_ALL)
-
+                        print("Você ainda está na fase:point")
+                    #Apostas dentro do Point
+                    continuapoint=True
+                    while continuapoint and f>0:
+                        print("Você tem:{0} fichas".format(f))
+                        perguntaP=str(input (Fore.BLUE+"Quer apostar mais(s/n)?"))
+                        print(Style.RESET_ALL)
+                        while perguntaP!="s" and perguntaP!="n":
+                            perguntaP=str(input (Fore.BLUE+"Quer apostar mais(s/n)?"))
+                            if perguntaP=="n":
+                                continuapoint=False
+                            #Escolha do tipo da aposta    
+                            elif perguntaP=="s":
+                                print("Você pode apostar no FIELD(F); ANY CRAPS(A); TWELVE(T).")  
+                                tipoF=str(input(Fore.BLUE+"Quer apostar no F (s/n)?"))
+                                print(Style.RESET_ALL)
+                                while tipoF!="s" and tipoF!="n":
+                                    tipoF=str(input(Fore.BLUE+"Quer apostar no F (s/n)?"))
+                                    print(Style.RESET_ALL)
+                                tipoA=str(input(Fore.BLUE+"Quer apostar no A (s/n)?"))
+                                print(Style.RESET_ALL)
+                                while tipoA!="s" and tipoA!="n":
+                                    tipoA=str(input(Fore.BLUE+"Quer apostar no A (s/n)?"))
+                                    print(Style.RESET_ALL)
+                                tipoT=str(input(Fore.BLUE+"Quer apostar no T (s/n)?"))
+                                print(Style.RESET_ALL)
+                                while tipoT!="s" and tipoT!="n":
+                                    tipoT=str(input(Fore.BLUE+"Quer apostar no T (s/n)?"))
+                                    print(Style.RESET_ALL)
     # garante que a resposta seja apenas apostar ou sair do jogo 
     else:
-        pergunta=str(input (Fore.BLUE+"Quer apostar ou sair do jogo?"))
-        print(Style.RESET_ALL)
+         pass
