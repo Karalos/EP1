@@ -33,18 +33,30 @@ while continuar and f>0:
     pergunta=str(input (Fore.BLUE+"Quer apostar ou sair do jogo?"))
     print(Style.RESET_ALL)
     if pergunta=="sair do jogo":
-        continuar=False
+        continuar=False 
     #Escolha do tipo da aposta    
-    else:
+    elif pergunta=="apostar":
         print("Você pode apostar no PASS LINE BELT(P); FIELD(F); ANY CRAPS(A); TWELVE(T).")
         tipoP=str(input(Fore.BLUE+"Quer apostar no P (s/n)?"))
         print(Style.RESET_ALL)
+        while tipoP!="s" and tipoP!="n":
+            tipoP=str(input(Fore.BLUE+"Quer apostar no P (s/n)?"))
+            print(Style.RESET_ALL)         
         tipoF=str(input(Fore.BLUE+"Quer apostar no F (s/n)?"))
         print(Style.RESET_ALL)
+        while tipoF!="s" and tipoF!="n":
+            tipoF=str(input(Fore.BLUE+"Quer apostar no F (s/n)?"))
+            print(Style.RESET_ALL)
         tipoA=str(input(Fore.BLUE+"Quer apostar no A (s/n)?"))
         print(Style.RESET_ALL)
+        while tipoA!="s" and tipoA!="n":
+            tipoA=str(input(Fore.BLUE+"Quer apostar no A (s/n)?"))
+            print(Style.RESET_ALL)
         tipoT=str(input(Fore.BLUE+"Quer apostar no T (s/n)?"))
         print(Style.RESET_ALL)
+        while tipoT!="s" and tipoT!="n":
+            tipoT=str(input(Fore.BLUE+"Quer apostar no T (s/n)?"))
+            print(Style.RESET_ALL)
 
         #Aposta T
         if tipoT=="s":
@@ -52,83 +64,84 @@ while continuar and f>0:
             valorT=int(input(Fore.BLUE+"Quanto você quer apostar?"))
             print(Style.RESET_ALL)
             f=f-valorT
-            VitoriaT=12
-            if soma==VitoriaT:
+            if soma==12:
                 f=f+valorT*31
                 print(Fore.YELLOW+"Você ganhou")
                 print(Style.RESET_ALL)
-            else:
+            elif soma==2 or soma==3 or soma==4 or soma==5 or soma==6 or soma==7 or soma==8 or soma==9 or soma==10 or soma==11:
                 print(Fore.YELLOW+"Você perdeu") 
                 print(Style.RESET_ALL)
         #Aposta A
-        if tipoA=="s":
+        if tipoA=="s" and f>0:
             print("Você apostou no tipo ANY CRAPS:{0} fichas".format(f))
             valorA=int(input(Fore.BLUE+"Quanto você quer apostar?"))
             print(Style.RESET_ALL)
             f=f-valorA
-            VitoriaA=2 or 3 or 12
-            if soma==VitoriaA:
+            if soma==2 or soma==3 or soma==12:
                 f=f+valorA*8
                 print(Fore.YELLOW+"Você ganhou")
                 print(Style.RESET_ALL)
-            else:
+            elif soma==4 or soma==5 or soma==6 or soma==7 or soma==8 or soma==9 or soma==10 or soma==11:
                 print(Fore.YELLOW+"Você perdeu")
                 print(Style.RESET_ALL)
 
         #Aposta F        
-        if tipoF=="s":
+        if tipoF=="s" and f>0:
             print("Você apostou no tipo FIELD:{0} fichas".format(f))
             valorF=int(input(Fore.BLUE+"Quanto você quer apostar?")) 
             print(Style.RESET_ALL)
             f=f-valorF
-            Derrota=5 or 6 or 7 or 8
-            Empate=3 or 4 or 9 or 10 or 11
-            VitoriaF2=2
-            VitoriaF3=12
-            if soma==Derrota:
-                f=f+0
+            if soma==5 or soma==6 or soma==7 or soma==8:
+                f=0
                 print(Fore.YELLOW+ "Você perdeu" )
                 print(Style.RESET_ALL)
-            elif soma==Empate:
+            elif soma==3 or soma==4 or soma==9 or soma==10 or soma==11:
                 f=f+valorF
                 print(Fore.YELLOW+ "Você recebe sua aposta de volta")
                 print(Style.RESET_ALL)
-            elif soma==VitoriaF2:
+            elif soma==2:
                 f=f+valorF*3
                 print(Fore.YELLOW+ "Você ganhou x2")
                 print(Style.RESET_ALL)
-            elif soma==VitoriaF3:
+            elif soma==12:
                 f=f+valorF*4
                 print(Fore.YELLOW+ "Você ganhou x3")
                 print(Style.RESET_ALL)
 
         #Aposta P        
-        if tipoP=="s":
+        if tipoP=="s" and f>0:
             print("Você apostou no tipo PASS LINE BET:{0} fichas".format(f))
             valorP=int(input(Fore.BLUE+"Quanto você quer apostar?"))
             print(Style.RESET_ALL)
             f=f-valorP
-            VitoriaP=7 or 11
-            PassouP=4 or 5 or 6 or 8 or 9 or 10
-            if soma==VitoriaP:
+            if soma==7 or soma==11:
                 f=f+valorP*2
                 print(Fore.YELLOW+"Você ganhou")
                 print(Style.RESET_ALL)
-            elif soma==PassouP:
+            elif soma==4 or soma==5 or soma==6 or soma==8 or soma==9 or soma==10:
                 #Fase Point
                 VitoriaPoint=soma
-                POINT=True
-                while POINT:
-                    input("Você está na fase:point")
+                Point=True
+                while Point:
+                    print("Você está na fase:point")
+                    print("Você pode apostar no FIELD(F); ANY CRAPS(A); TWELVE(T).")
                     SOMA=(random.randint(1,6) + random.randint(1,6))
                     if SOMA==VitoriaPoint:
                         f=f+valorP
                         POINT=False
                         input("Você ganhou, saindo da fase:point")
                     elif SOMA==7:
-                        f=F+0
+                        f=0
                         input("Você perdeu, saindo da fase:point")
+                        Point=False
                     else:
                         SOMA=True
                         input("Você ainda está na fase:point")
+            elif soma==2 or soma==3 or soma==12:
+                print("Você perdeu")
+                print(Style.RESET_ALL)
 
+    # garante que a resposta seja apenas apostar ou sair do jogo 
+    else:
+        pergunta=str(input (Fore.BLUE+"Quer apostar ou sair do jogo?"))
+        print(Style.RESET_ALL)
