@@ -125,10 +125,10 @@ while continuar and f>0:
                 while Point:
                     print("Você está na fase:point")
                     print("Você pode apostar no FIELD(F); ANY CRAPS(A); TWELVE(T).")
-                    SOMA=random.randint(1,6)+random.randint(1,6)
                     #Apostas dentro do Point
                     while f>0 and Point:
                         print("Você tem:{0} fichas".format(f))
+                        SOMA=random.randint(1,6)+random.randint(1,6)
                         perguntaP=str(input (Fore.RED+"Quer apostar mais(s/n)?"))
                         print(Style.RESET_ALL)
                         while perguntaP!="s" and perguntaP!="n":
